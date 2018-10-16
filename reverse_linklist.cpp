@@ -10,11 +10,19 @@ void insert(int val);
 void print();
 void deleteNode(int val);
 void searchNode(int val);
+void reverseList();
 
 
 struct Node* start = NULL;
 int main(){
-	
+	insert(5);
+	insert(10);
+	insert(15);
+	insert(20);
+	print();
+	cout << "Reverse List is" << endl;
+	reverseList();
+	print();
 }
 
 void insert(int val){
@@ -70,6 +78,19 @@ void searchNode(int val){
 			}
 		}	
 	}
+}
+
+void reverseList(){
+	struct Node* curr = start;
+	struct Node* prev = NULL;
+	struct Node* next;
+	while(curr != NULL){
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;	
+	}
+	start = prev;	
 }
 
 void print(){
